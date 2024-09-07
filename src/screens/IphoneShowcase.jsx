@@ -1,28 +1,11 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import HomeScreen from "../components/HomeScreen";
-import StepThree from "../components/StepThree";
-import PropertyDetails from "../components/PropertyDetails";
-import "tailwindcss/tailwind.css";
+import React, { useState } from "react";
+import AnimatedScreens from "../components/AnimatedScreen";
 
 export default function IphoneShowcase() {
-  const [scrollPosition, setScrollPosition] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const position = window.scrollY;
-      const maxScroll =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercentage = (position / maxScroll) * 100;
-      setScrollPosition(scrollPercentage);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   return (
-    <div className="flex justify-center items-center min-h-screen grad ml-100">
+    <div className="flex justify-center items-center min-h-screen bg-bg-dark">
       {/* Left Section: Step and Description */}
       <div className="text-left text-white w-1/2 pl-8">
         <h2 className="text-5xl font-medium mb-4 text-[#888888]">
@@ -36,12 +19,12 @@ export default function IphoneShowcase() {
       </div>
 
       {/* Right half with black background */}
-      <div className="w-1/2 relative h-screen">
+      <div className="w-1/2 bg-black relative h-screen">
         {/* Scrollbar on the right */}
         <div className="absolute right-8 top-1/2 h-1/2 w-1 bg-gray-800 rounded-full transform -translate-y-1/2">
           <div 
             className="w-3 h-3 bg-white rounded-full absolute right-0 transform -translate-x-0"
-            style={{ top: `${scrollPosition}%` }}
+            style={{ top: `${scrollProgress}%` }}
           ></div>
         </div>
 
@@ -52,9 +35,7 @@ export default function IphoneShowcase() {
               <div className="w-1/3 h-6 bg-black absolute top-0 rounded-b-xl"></div>
             </div>
             <div className="w-full h-full bg-white rounded-[2.5rem] overflow-hidden">
-              <PropertyDetails />
-              {/* <HomeScreen /> */}
-              {/* <StepThree /> */}
+              <AnimatedScreens setScrollProgress={setScrollProgress} />
             </div>
           </div>
         </div>
@@ -62,5 +43,3 @@ export default function IphoneShowcase() {
     </div>
   );
 }
-
-

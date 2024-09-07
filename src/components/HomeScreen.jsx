@@ -2,7 +2,7 @@ import React from "react";
 import { ChevronLeft, User, Search, Home, UserCircle, Settings, Star } from 'lucide-react';
 import "tailwindcss/tailwind.css";
 
-const HomeScreen = () => {
+const HomeScreen = ({ onGetStarted }) => {
   const propertyCards = [
     { name: "Luxury Apartment", rating: 4.8, location: "Sector 54", price: "₹25,000/month", image: "/placeholder.svg" },
     { name: "Cozy Studio", rating: 4.5, location: "DLF Phase 1", price: "₹18,000/month", image: "/placeholder.svg" },
@@ -30,10 +30,10 @@ const HomeScreen = () => {
         </div>
       </div>
 
-      {/* Property cards */}
-      <div className="flex-1 overflow-y-auto">
+{/* Property cards */}
+<div className="flex-1 overflow-y-auto">
         {propertyCards.map((property, index) => (
-          <div key={index} className="flex p-4 border-b">
+          <div key={index} className="flex p-4 border-b cursor-pointer" onClick={onGetStarted}>
             <img src={property.image} alt={property.name} className="w-24 h-24 object-cover rounded-md mr-4" />
             <div className="flex flex-col justify-between">
               <div>
