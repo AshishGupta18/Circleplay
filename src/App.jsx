@@ -2,8 +2,8 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import './components/IphoneShowcase'
-import IphoneShowcase from './components/IphoneShowcase'
+import './screens/IphoneShowcase'
+import IphoneShowcase from './screens/IphoneShowcase'
 
 function App() {
   const [count, setCount] = useState(0)
